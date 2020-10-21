@@ -8,9 +8,13 @@ using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour
 {
+    [HideInInspector]
     public int wood = 0;
+    [HideInInspector]
     public int stone = 0;
+    [HideInInspector]
     public int food = 0;
+    [HideInInspector]
     public float water = 0;
 
     public TextMeshProUGUI woodText;
