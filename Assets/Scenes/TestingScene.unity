@@ -4354,7 +4354,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 493496722}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.6869333, y: 7.52, z: -0.79218966}
+  m_LocalPosition: {x: -3.6869333, y: 3.33, z: -0.79218966}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1341570755}
@@ -9728,7 +9728,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1190256675}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.89, z: 0}
+  m_LocalPosition: {x: 0, y: -1.9199996, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 493496724}
@@ -10406,7 +10406,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1341570752}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.66, z: 0}
+  m_LocalPosition: {x: 0, y: 1.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 493496724}
@@ -10477,7 +10477,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1217da3caeb95014e885facd6e041f4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thirstSlider: {fileID: 0}
 --- !u!114 &1341874025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13263,7 +13262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b8d9d16813124e4eb70156a48da79f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hungerSlider: {fileID: 0}
 --- !u!114 &1710195607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15500,7 +15498,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2069050758}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.3, z: 0}
+  m_LocalPosition: {x: 0, y: 0.05000019, z: 0}
   m_LocalScale: {x: 1.2, y: 1.8, z: 1.2}
   m_Children: []
   m_Father: {fileID: 493496724}
