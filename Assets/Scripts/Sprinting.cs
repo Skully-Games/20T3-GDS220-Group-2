@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AdvancedMovement : MonoBehaviour
+public class Sprinting : MonoBehaviour
 {
     PlayerMovement basicMovementScript;
     public float speedBoost = 10f;
