@@ -12,10 +12,10 @@ public class PlayerInventory : MonoBehaviour
     public int wood = 0;
     [HideInInspector]
     public int stone = 0;
-    [HideInInspector]
+    
     public int food = 0;
-    [HideInInspector]
-    public float water = 0;
+    
+    public int water = 0;
 
     public TextMeshProUGUI woodText;
     public TextMeshProUGUI stoneText;
