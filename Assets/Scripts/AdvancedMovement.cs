@@ -16,6 +16,8 @@ public class AdvancedMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //the script for running 
+          
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             basicMovementScript.speed += speedBoost;
@@ -25,5 +27,9 @@ public class AdvancedMovement : MonoBehaviour
         {
             basicMovementScript.speed -= speedBoost;
         }
+
+
+       
+
     }
 }
