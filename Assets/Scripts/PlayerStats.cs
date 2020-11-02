@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
@@ -18,6 +19,7 @@ public class PlayerStats : MonoBehaviour
     public float thirstBurnRate;
 
     public StatusBars statBars;
+    public GameObject deathScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -31,9 +33,20 @@ public class PlayerStats : MonoBehaviour
         statBars.SetMaxThirst(maxThirst);
     }
 
+    public void Condemnation()
+    {
+        currentHealth = 15;
+        currentHunger = 0;
+        currentThirst = 0;
+    }
+
     // Update is called once per frame
     void Update()
     {
+        //For debugging purposes:
+
+
+
         currentHunger -= (Time.deltaTime / hungerBurnRate);
         currentThirst -= (Time.deltaTime / thirstBurnRate);
 
@@ -57,6 +70,12 @@ public class PlayerStats : MonoBehaviour
             currentHunger = maxHunger;
         }
 
+        if(currentHealth <= 0)
+        {
+            currentHealth = 0;
+            YouDied();
+        }
+
         if (currentHunger <= 0)
         {
             currentHunger = 0;
@@ -78,6 +97,12 @@ public class PlayerStats : MonoBehaviour
         {
             DoubleDeath();
         }
+    }
+
+    void YouDied()
+    {
+        deathScreen.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
     }
 
 
