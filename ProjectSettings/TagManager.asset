@@ -9,6 +9,7 @@ TagManager:
   - Stone
   - Water
   - Light
+  - CraftingTable
   layers:
   - Default
   - TransparentFX

@@ -12,9 +12,9 @@ public class PlayerInventory : MonoBehaviour
     public int wood = 0;
     [HideInInspector]
     public int stone = 0;
-    
+
     public int food = 0;
-    
+
     public int water = 0;
 
     public TextMeshProUGUI woodText;
@@ -24,7 +24,10 @@ public class PlayerInventory : MonoBehaviour
     public TextMeshProUGUI pickUpMessage;
 
     public GameObject Interactable;
+    public GameObject craftingUI;
     public Camera camera;
+
+    public Crafting crafting;
 
     private ResorcePickup itemBeingPickedUp;
 
@@ -89,13 +92,18 @@ public class PlayerInventory : MonoBehaviour
                     Destroy(itemBeingPickedUp.gameObject);
                     itemBeingPickedUp = null;
                 }
+                else if (itemBeingPickedUp.tag == "CraftingTable")
+                {
+                    crafting.CraftingOpen();
+                }
             }
         }
+
         else
         {
             pickUpMessage.gameObject.SetActive(false);
         }
-       
+
 
     }
 
@@ -110,11 +118,11 @@ public class PlayerInventory : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * 4f, Color.red);
 
         RaycastHit hitInfo;
-        if(Physics.Raycast(ray, out hitInfo, 4f))
+        if (Physics.Raycast(ray, out hitInfo, 4f))
         {
             var hitItem = hitInfo.collider.GetComponent<ResorcePickup>();
 
-            if(hitItem == null)
+            if (hitItem == null)
             {
                 itemBeingPickedUp = null;
             }
@@ -123,7 +131,7 @@ public class PlayerInventory : MonoBehaviour
                 itemBeingPickedUp = hitItem;
                 pickUpMessage.text = "Pick Up: " + itemBeingPickedUp.gameObject.name;
             }
-            
+
         }
         else
         {

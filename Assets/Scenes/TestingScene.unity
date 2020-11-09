@@ -4584,6 +4584,7 @@ MonoBehaviour:
   gravity: -19.62
   jumpHeight: 3
   speedBoost: 10
+  animator: {fileID: 0}
   groundCheck: {fileID: 1190256676}
   groundDistance: 0.4
   groundMask:
