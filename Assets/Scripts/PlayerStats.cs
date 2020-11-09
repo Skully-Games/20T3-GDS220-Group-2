@@ -14,7 +14,7 @@ public class PlayerStats : MonoBehaviour
     public float maxThirst;
     public float currentThirst;
 
-    public float healthBurnRate = 1.5f;
+    public float healthBurnRate = 3f;
     public float hungerBurnRate;
     public float thirstBurnRate;
 
@@ -133,7 +133,7 @@ public class PlayerStats : MonoBehaviour
 
     void DoubleDeath()
     {
-        healthBurnRate = 0.75f;
+        healthBurnRate = 1.5f;
         currentHealth -= (Time.deltaTime / healthBurnRate);
     }
 

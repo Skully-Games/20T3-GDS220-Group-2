@@ -19,9 +19,6 @@ public class PlayerMovement : MonoBehaviour
     
     float running;
    
-
-
-
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
