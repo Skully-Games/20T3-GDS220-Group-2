@@ -9,6 +9,9 @@ TagManager:
   - Stone
   - Water
   - Light
+  - Grass
+  - Sand
+  - AmbienceD
   layers:
   - Default
   - TransparentFX
