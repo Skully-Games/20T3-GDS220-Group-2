@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//[ExecuteAlways]
+
 public class LightManager : MonoBehaviour
 {
     public GameObject targetLight;
     public GameObject targetMainCamera;
-    public Material[] skys;
+    public Material[] sky;
 
     [SerializeField] private Light DirectionalLight;
     [SerializeField] private LightPreset Preset;
 
-    [SerializeField, Range(0, 24)] private float TimeofDay;
+    [SerializeField, Range(0, 48)] private float TimeofDay;
 
-    [SerializeField, Range(0, 5)] private float dayTimer;
+    [SerializeField, Range(0, 5)] private float LightIntensity;
 
     private void Awake()
     {
@@ -23,7 +23,7 @@ public class LightManager : MonoBehaviour
     }
     void Start()
     {
-        dayTimer = Mathf.Abs(targetLight.GetComponent<Light>().intensity);
+        LightIntensity = Mathf.Abs(targetLight.GetComponent<Light>().intensity);
     }
     void Update()
     {
@@ -33,26 +33,24 @@ public class LightManager : MonoBehaviour
         if (Application.isPlaying)
         {
             TimeofDay += Time.deltaTime;
-            TimeofDay %= 24;
-            UpdateLighting(TimeofDay / 24f);
+            TimeofDay %= 48;  // For longer period of time change the value
+            UpdateLighting(TimeofDay / 48f);
         }
         else
         {
-            UpdateLighting(TimeofDay / 24f);
+            UpdateLighting(TimeofDay / 48f);
         }
 
-        if (TimeofDay <= 12f)
+        if (TimeofDay <= 24f)
         {
-            targetLight.GetComponent<Light>().intensity = dayTimer += Time.deltaTime * 0.4f;
+            targetLight.GetComponent<Light>().intensity = LightIntensity += Time.deltaTime * 0.18f;
         }
-        else if (TimeofDay <= 24f)
+        else if (TimeofDay <= 48f)
         {
-            targetLight.GetComponent<Light>().intensity = dayTimer -= Time.deltaTime * 0.4f;
+            targetLight.GetComponent<Light>().intensity = LightIntensity -= Time.deltaTime * 0.18f;
         }
 
         ChangeCycle();
-
-        OtherCycle();
     }
 
     private void UpdateLighting(float timePercent)
@@ -72,7 +70,7 @@ public class LightManager : MonoBehaviour
     private void OnValidate()
     {
         if (DirectionalLight != null)
-        
+
             return;
 
         if (RenderSettings.sun != null)
@@ -83,37 +81,48 @@ public class LightManager : MonoBehaviour
         {
             Light[] lights = GameObject.FindObjectsOfType<Light>();
 
-            foreach(Light light in lights)
+            foreach (Light light in lights)
             {
-                if(light.type==LightType.Directional)
+                if (light.type == LightType.Directional)
                 {
                     DirectionalLight = light;
                     return;
                 }
             }
-           
+
         }
-        
+
     }
     void ChangeCycle()  //THIS FUNCTION IS FOR CHANGING THE SKYBOX AND NEEDS TO SETUP A SKYBOX IN MAIN CAMERA
     {
-        if (TimeofDay >= 7f)
+        if (TimeofDay >= 0.2f)
         {
-            targetMainCamera.GetComponent<Skybox>().material = skys[0];
+            targetMainCamera.GetComponent<Skybox>().material = sky[3];
         }
 
-        else if (TimeofDay >= 0.2f)
+        if (TimeofDay >= 10.5f)
         {
-            targetMainCamera.GetComponent<Skybox>().material = skys[1];
+            targetMainCamera.GetComponent<Skybox>().material = sky[2];
         }
 
-    }
-
-    void OtherCycle()  //THIS FUNCTION IS FOR CHANGING THE SKYBOX AND NEEDS TO SETUP A SKYBOX IN MAIN CAMERA
-    {
-        if (TimeofDay >= 20f)
+        if (TimeofDay >= 12.5f)
         {
-            targetMainCamera.GetComponent<Skybox>().material = skys[1];
+            targetMainCamera.GetComponent<Skybox>().material = sky[0];
+        }
+
+        if (TimeofDay >= 38.5f)
+        {
+            targetMainCamera.GetComponent<Skybox>().material = sky[2];
+        }
+
+        if (TimeofDay >= 40.5f)
+        {
+            targetMainCamera.GetComponent<Skybox>().material = sky[3];
+        }
+
+        if (TimeofDay >= 45.5f)
+        {
+            targetMainCamera.GetComponent<Skybox>().material = sky[1];
         }
 
     }

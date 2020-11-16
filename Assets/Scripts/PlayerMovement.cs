@@ -22,7 +22,12 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
+    public float waterDistance = 0.4f;
+    public LayerMask waterMask;
     bool isGrounded;
+    bool isWatered;
+
+    public Crafting crafting;
 
     void Start()
     {
@@ -33,11 +38,14 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        isWatered = Physics.CheckSphere(groundCheck.position, waterDistance, waterMask);
         
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
+
+        
 
         float x = Input.GetAxis("Horizontal");
         //float z = Input.GetAxis("Vertical");
@@ -79,8 +87,12 @@ public class PlayerMovement : MonoBehaviour
         }
 
         velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
-
-        
+        controller.Move(velocity * Time.deltaTime);        
     }
+
+    public void deployBoat()
+    {
+        Debug.Log("Boat Deployed");
+    }
+
 }
