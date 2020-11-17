@@ -38,14 +38,18 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        isWatered = Physics.CheckSphere(groundCheck.position, waterDistance, waterMask);
+     //   isWatered = Physics.CheckSphere(groundCheck.position, waterDistance, waterMask);
         
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
 
-        
+     /*   if (isWatered && crafting.boatCrafted)
+        {
+            Debug.Log("You Win!");
+        }
+     */
 
         float x = Input.GetAxis("Horizontal");
         //float z = Input.GetAxis("Vertical");
@@ -90,9 +94,9 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);        
     }
 
-    public void deployBoat()
+  /*  public void deployBoat()
     {
         Debug.Log("Boat Deployed");
     }
-
+  */
 }

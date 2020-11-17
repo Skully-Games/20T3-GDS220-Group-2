@@ -10,7 +10,7 @@ public class Crafting : MonoBehaviour
     public GameObject pickaxeCrafting;
     public GameObject CraftingUI;
 
-    private bool boatCrafted = false;
+    public bool boatCrafted = false;
 
 
     public PlayerInventory inventory;
