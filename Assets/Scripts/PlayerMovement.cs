@@ -7,9 +7,9 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller;
 
     public float speed = 5f;
-    public float gravity = -100;
-    public float jumpHeight = 3f;
-    public float speedBoost = 10f;
+    public float gravity = -100f;
+    public float jumpHeight = 4f;
+    public float speedBoost = 7f;
 
     Vector3 velocity;
 
@@ -17,8 +17,6 @@ public class PlayerMovement : MonoBehaviour
 
     float walkingV;
     
-    float running;
-   
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
@@ -28,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     bool isWatered;
 
     public Crafting crafting;
+
 
     void Start()
     {
@@ -52,51 +51,37 @@ public class PlayerMovement : MonoBehaviour
      */
 
         float x = Input.GetAxis("Horizontal");
-        //float z = Input.GetAxis("Vertical");
-
-
-        running = Input.GetAxis("Vertical");
-        
-        //animator.SetFloat("Running", Mathf.Abs(running));
-
+       
         walkingV = Input.GetAxis("Vertical");
-
+  
         animator.SetFloat("Walking", Mathf.Abs(walkingV));
-
-        
-        //animator.SetFloat("Walking", walking);
 
         Vector3 move = transform.right * x + transform.forward * walkingV;
         controller.Move(move * speed * Time.deltaTime);
 
-
-
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            animator.SetFloat("Running", running);
+            animator.SetFloat("Running", 1f);
             speed += speedBoost;
         }
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-
             animator.SetFloat("Running", 0f);
             speed -= speedBoost;
+            SoundManager.PlaySFX("HBreathing");
         }
 
         
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            SoundManager.PlaySFX("JumpLanding");
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);      
         }
 
         velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);        
-    }
-
-  /*  public void deployBoat()
-    {
-        Debug.Log("Boat Deployed");
+        controller.Move(velocity * Time.deltaTime);
+        
     }
   */
 }

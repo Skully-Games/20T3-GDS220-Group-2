@@ -2,28 +2,51 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+//[ExecuteAlways]
 public class LightManager : MonoBehaviour
 {
+    [Header("Ambience Day Controlls")]
+    public AudioSource ambienceDaySource;
+    [SerializeField, Range(0, 1)] private float ambienceVolumeDay;
+    [Space(5)]
+
+    [Header("Ambience Night Controlls")]
+    public AudioSource ambienceNightSource;
+    [SerializeField, Range(0, 1)] private float ambienceVolumeNight;
+    [Space(5)]
+
+    [Header("Game Object Source")]
     public GameObject targetLight;
     public GameObject targetMainCamera;
+    [Space(5)]
+
+    [Header("Skybox Source")]
     public Material[] sky;
+    [Space(5)]
 
     [SerializeField] private Light DirectionalLight;
     [SerializeField] private LightPreset Preset;
+    [Space(5)]
 
     [SerializeField, Range(0, 48)] private float TimeofDay;
-
     [SerializeField, Range(0, 5)] private float LightIntensity;
 
     private void Awake()
     {
+
         targetLight = GameObject.FindGameObjectWithTag("Light");
         targetMainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+
     }
     void Start()
     {
         LightIntensity = Mathf.Abs(targetLight.GetComponent<Light>().intensity);
+
+        ambienceVolumeDay = ambienceDaySource.GetComponent<AudioSource>().volume;
+        ambienceVolumeDay = 0.1f;
+
+        ambienceVolumeNight = ambienceNightSource.GetComponent<AudioSource>().volume;
+        ambienceVolumeNight = 1f;
     }
     void Update()
     {
@@ -44,10 +67,18 @@ public class LightManager : MonoBehaviour
         if (TimeofDay <= 24f)
         {
             targetLight.GetComponent<Light>().intensity = LightIntensity += Time.deltaTime * 0.18f;
+
+            ambienceDaySource.GetComponent<AudioSource>().volume = ambienceVolumeDay += Time.deltaTime * 0.04f;
+
+            ambienceNightSource.GetComponent<AudioSource>().volume = ambienceVolumeNight -= Time.deltaTime * 0.04f;
         }
         else if (TimeofDay <= 48f)
         {
             targetLight.GetComponent<Light>().intensity = LightIntensity -= Time.deltaTime * 0.18f;
+
+            ambienceDaySource.GetComponent<AudioSource>().volume = ambienceVolumeDay -= Time.deltaTime * 0.04f;
+
+            ambienceNightSource.GetComponent<AudioSource>().volume = ambienceVolumeNight += Time.deltaTime * 0.04f;
         }
 
         ChangeCycle();
@@ -70,7 +101,7 @@ public class LightManager : MonoBehaviour
     private void OnValidate()
     {
         if (DirectionalLight != null)
-
+        
             return;
 
         if (RenderSettings.sun != null)
@@ -81,17 +112,17 @@ public class LightManager : MonoBehaviour
         {
             Light[] lights = GameObject.FindObjectsOfType<Light>();
 
-            foreach (Light light in lights)
+            foreach(Light light in lights)
             {
-                if (light.type == LightType.Directional)
+                if(light.type==LightType.Directional)
                 {
                     DirectionalLight = light;
                     return;
                 }
             }
-
+           
         }
-
+        
     }
     void ChangeCycle()  //THIS FUNCTION IS FOR CHANGING THE SKYBOX AND NEEDS TO SETUP A SKYBOX IN MAIN CAMERA
     {
@@ -126,5 +157,5 @@ public class LightManager : MonoBehaviour
         }
 
     }
-
+  
 }

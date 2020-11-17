@@ -98,7 +98,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.3417569
+        functionName: GrassFootStep
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 2c8fe96fa1b0aaf4198f126e08f82183, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.8507822
+        functionName: GrassFootStep
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 2c8fe96fa1b0aaf4198f126e08f82183, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -127,7 +141,21 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.30565584
+        functionName: GrassFootStep
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 2c8fe96fa1b0aaf4198f126e08f82183, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.82190126
+        functionName: GrassFootStep
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 2c8fe96fa1b0aaf4198f126e08f82183, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

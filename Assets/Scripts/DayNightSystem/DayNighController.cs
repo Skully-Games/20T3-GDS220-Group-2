@@ -5,7 +5,7 @@ using UnityEngine;
 public class DayNighController : MonoBehaviour
 {
 
-    /* OLD CODE FOR DAY AND NIGHT
+    /* OLD CODE FOR DAY AND NIGHT cycle
 
     public GameObject targetLight;
     public GameObject targetMainCamera;
