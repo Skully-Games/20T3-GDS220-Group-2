@@ -8,9 +8,9 @@ using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour
 {
-    [HideInInspector]
+   // [HideInInspector]
     public int wood = 0;
-    [HideInInspector]
+   // [HideInInspector]
     public int stone = 0;
 
     public int food = 0;

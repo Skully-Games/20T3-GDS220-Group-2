@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -5554917339613983253}
   m_Layer: 0
   m_Name: island_dirtpile
-  m_TagString: Untagged
+  m_TagString: Sand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

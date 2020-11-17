@@ -9,7 +9,9 @@ TagManager:
   - Stone
   - Water
   - Light
-  - CraftingTable
+  - Grass
+  - Sand
+  - AmbienceD
   layers:
   - Default
   - TransparentFX
