@@ -12,6 +12,7 @@ TagManager:
   - Grass
   - Sand
   - AmbienceD
+  - CraftingTable
   layers:
   - Default
   - TransparentFX
