@@ -13,7 +13,6 @@ namespace LukeAJ
         
         //May want to change this to reference the player script instead but just hacked it for now
         public Transform player;
-        
         public float speed;
         public GameObject crystal;
 
@@ -65,5 +64,10 @@ namespace LukeAJ
                 transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
             }
         }
+
+        // public void Retreat()
+        // {
+        //     
+        // }
     }
 }
