@@ -21,6 +21,8 @@ public class PlayerStats : MonoBehaviour
     public StatusBars statBars;
     public GameObject deathScreen;
 
+    bool godCheck;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,12 +30,17 @@ public class PlayerStats : MonoBehaviour
         currentHunger = maxHunger;
         currentThirst = maxThirst;
 
-        statBars.SetMaxHealth(maxHealth);
-        statBars.SetMaxHunger(maxHunger);
-        statBars.SetMaxThirst(maxThirst);
+        statBars.healthValue = maxHealth;
+        statBars.hungerValue = maxHunger;
+        statBars.thirstValue = maxThirst;
     }
 
-    public void Condemnation()
+    public void GodMode()
+    {
+        godCheck = !godCheck;
+    }
+
+    public void KillPlayer()
     {
         currentHealth = 15;
         currentHunger = 0;
@@ -44,18 +51,22 @@ public class PlayerStats : MonoBehaviour
     void Update()
     {
         //For debugging purposes:
+        if (!godCheck)
+        {
+            currentHunger -= (Time.deltaTime / hungerBurnRate);
+            currentThirst -= (Time.deltaTime / thirstBurnRate);
+        }
+        else
+        {
+            return;
+        }
 
-
-
-        currentHunger -= (Time.deltaTime / hungerBurnRate);
-        currentThirst -= (Time.deltaTime / thirstBurnRate);
-
-        statBars.SetHealth(currentHealth);
-        statBars.SetHunger(currentHunger);
-        statBars.SetThirst(currentThirst);
+        statBars.healthValue = currentHealth;
+        statBars.hungerValue = currentHunger;
+        statBars.thirstValue = currentThirst;
 
         // Checks if Player health can regenerate
-        if(currentHealth < maxHealth && currentHunger > 0 && currentThirst > 0)
+        if (currentHealth < maxHealth && currentHunger > 0 && currentThirst > 0)
         {
             currentHealth += (Time.deltaTime / healthBurnRate);
         }
