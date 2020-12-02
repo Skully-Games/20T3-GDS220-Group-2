@@ -28,6 +28,8 @@ public class PlayerInventory : MonoBehaviour
     public Camera camera;
 
     public Crafting crafting;
+    public EndGame endGame;
+    public PlayerMovement playerMovement;
 
     private ResorcePickup itemBeingPickedUp;
 
@@ -95,6 +97,14 @@ public class PlayerInventory : MonoBehaviour
                 else if (itemBeingPickedUp.tag == "CraftingTable")
                 {
                     crafting.CraftingOpen();
+                }
+
+                else if (itemBeingPickedUp.tag == "BoatDeploy")
+                {
+                    if (crafting.boatCrafted = true && playerMovement.isWatered)
+                    {
+                        endGame.GameEnd();
+                    }
                 }
             }
         }

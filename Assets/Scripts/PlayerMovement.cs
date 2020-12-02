@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     public float waterDistance = 0.4f;
     public LayerMask waterMask;
     bool isGrounded;
-    bool isWatered;
+    public bool isWatered;
 
     public Crafting crafting;
 
@@ -37,18 +37,19 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-     //   isWatered = Physics.CheckSphere(groundCheck.position, waterDistance, waterMask);
+        isWatered = Physics.CheckSphere(groundCheck.position, waterDistance, waterMask);
         
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
 
-     /*   if (isWatered && crafting.boatCrafted)
+     /*   if (isWatered)
         {
-            Debug.Log("You Win!");
+            Debug.Log("In water");
         }
      */
+
 
         float x = Input.GetAxis("Horizontal");
        
