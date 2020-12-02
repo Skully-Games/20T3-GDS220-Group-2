@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 
 public class DropdownMenus : MonoBehaviour
 {
+    /*
     public TMP_Dropdown woodDrop;
     public TMP_Dropdown stoneDrop;
     public TMP_Dropdown foodDrop;
@@ -118,4 +119,5 @@ public class DropdownMenus : MonoBehaviour
     {
 
     }
+    */
 }
