@@ -21,6 +21,7 @@ namespace LukeAJ
         public Transform patrolPoint;
         private float waitTime;
         public float startWaitTime;
+        public float turnSpeed;
         [Header("Crystal min and max Z and X positions (this will be the enemy's radius protecting the crystal)")]
         public float minX;
         public float maxX;
@@ -30,6 +31,9 @@ namespace LukeAJ
         //Chase variables
         [Header("Chase stuff")]
         public float stoppingDistance;
+        
+        //Retreat stuff
+        
 
         // Start is called before the first frame update
         void Start()
@@ -41,8 +45,27 @@ namespace LukeAJ
 
         public void Patrol()
         {
+            //making a variable to check distance between current pos and the next patrol position
+            Vector3 relativePos = patrolPoint.position - transform.position;
+
+            //need to check for null for tis function to work properly
+            //rotation while moving to next position
+            if (relativePos != Vector3.zero)
+            {
+                Quaternion lookRotation = Quaternion.LookRotation(relativePos);
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
+            }
+
+            //testing purposes
+            Debug.DrawRay(transform.position, relativePos, Color.red, 0f, false);
+
+            
+            //moving to the patrol point
             transform.position = Vector3.MoveTowards(transform.position, patrolPoint.position, speed * Time.deltaTime);
 
+
+
+            //the radius enemy likes to patrol in
             if (Vector3.Distance(transform.position, patrolPoint.position) < 0.2f)
             {
                 if (waitTime <= 0)
@@ -67,7 +90,10 @@ namespace LukeAJ
 
         // public void Retreat()
         // {
-        //     
+        //     if (GetComponent<HomeBase>().enemyEnter)
+        //     {
+        //         
+        //     }
         // }
     }
 }
