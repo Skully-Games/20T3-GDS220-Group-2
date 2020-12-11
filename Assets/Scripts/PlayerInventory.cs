@@ -8,19 +8,28 @@ using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour
 {
-   // [HideInInspector]
+    [HideInInspector]
     public int wood = 0;
-   // [HideInInspector]
+    [HideInInspector]
     public int stone = 0;
-
+    [HideInInspector]
     public int food = 0;
+    [HideInInspector]
+    public int crystal = 0;
 
-    public int water = 0;
+    public float holdToMineTimer = 2f;
+    public float holdToMineTimerElapsed;
+    public Slider mineBar;
+    public GameObject mineSlider;
+
+    //Water Drinking
+    public PlayerStats stats;
+    public float drinkSpeed;
 
     public TextMeshProUGUI woodText;
     public TextMeshProUGUI stoneText;
     public TextMeshProUGUI foodText;
-    public TextMeshProUGUI waterText;
+    public TextMeshProUGUI crystalText;
     public TextMeshProUGUI pickUpMessage;
 
     public GameObject Interactable;
@@ -39,7 +48,10 @@ public class PlayerInventory : MonoBehaviour
         woodText.text = wood.ToString();
         stoneText.text = stone.ToString();
         foodText.text = food.ToString();
-        waterText.text = water.ToString();
+        crystalText.text = crystal.ToString();
+
+        mineBar.maxValue = holdToMineTimer;
+        mineBar.value = holdToMineTimerElapsed;
 
         if (wood > 999)
         {
@@ -56,9 +68,9 @@ public class PlayerInventory : MonoBehaviour
             food = 999;
         }
 
-        if (water > 999)
+        if (crystal > 999)
         {
-            water = 999;
+            crystal = 999;
         }
         #endregion
 
@@ -68,7 +80,7 @@ public class PlayerInventory : MonoBehaviour
         {
             pickUpMessage.gameObject.SetActive(true);
 
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 if (itemBeingPickedUp.tag == "Wood")
                 {
@@ -88,12 +100,6 @@ public class PlayerInventory : MonoBehaviour
                     Destroy(itemBeingPickedUp.gameObject);
                     itemBeingPickedUp = null;
                 }
-                else if (itemBeingPickedUp.tag == "Water")
-                {
-                    water++;
-                    Destroy(itemBeingPickedUp.gameObject);
-                    itemBeingPickedUp = null;
-                }
                 else if (itemBeingPickedUp.tag == "CraftingTable")
                 {
                     crafting.CraftingOpen();
@@ -107,19 +113,54 @@ public class PlayerInventory : MonoBehaviour
                     }
                 }
             }
+
+            if (Input.GetButton("Fire1"))
+            {
+                if (itemBeingPickedUp.tag == "Crystal")
+                {
+                    mineSlider.gameObject.SetActive(true);
+                    HoldToMineProgress();
+                }
+            }
+
+            if (Input.GetKey(KeyCode.E))
+            {
+                if (itemBeingPickedUp.tag == "Water")
+                {
+                    stats.currentThirst += drinkSpeed * Time.deltaTime;
+                }
+            }
         }
 
         else
         {
             pickUpMessage.gameObject.SetActive(false);
+            mineSlider.gameObject.SetActive(false);
         }
 
+        if (Input.GetButtonUp("Fire1"))
+        {
+            holdToMineTimerElapsed = 0f;
+            mineSlider.gameObject.SetActive(false);
+        }
 
     }
 
     private bool HasItemTargetted()
     {
         return itemBeingPickedUp != null;
+    }
+
+    private void HoldToMineProgress()
+    {
+        holdToMineTimerElapsed += Time.deltaTime;
+        if (holdToMineTimerElapsed >= holdToMineTimer)
+        {
+            crystal++;
+            Destroy(itemBeingPickedUp.gameObject);
+            itemBeingPickedUp = null;
+            mineSlider.gameObject.SetActive(false);
+        }
     }
 
     private void SelectItemBeingPickedUpFromRay()
@@ -139,7 +180,24 @@ public class PlayerInventory : MonoBehaviour
             else if (hitItem != null && hitItem != itemBeingPickedUp)
             {
                 itemBeingPickedUp = hitItem;
-                pickUpMessage.text = "Pick Up: " + itemBeingPickedUp.gameObject.name;
+
+                if (itemBeingPickedUp.tag != "Crystal" && itemBeingPickedUp.tag != "Water" && itemBeingPickedUp.tag != "CraftingTable")
+                {
+                    pickUpMessage.text = "Pick Up: " + itemBeingPickedUp.gameObject.name;
+                }
+                else if (itemBeingPickedUp.tag == "Crystal")
+                {
+                    pickUpMessage.text = "(Hold LMB) Mine Crystal";
+                }
+                else if (itemBeingPickedUp.tag == "Water")
+                {
+                    pickUpMessage.text = "(Hold E) Drink Water";
+                }
+                else if (itemBeingPickedUp.tag == "CraftingTable")
+                {
+                    pickUpMessage.text = "Open Crafting Menu";
+                }
+
             }
 
         }
@@ -148,36 +206,4 @@ public class PlayerInventory : MonoBehaviour
             itemBeingPickedUp = null;
         }
     }
-
-    #region Collision-based Collection
-    /*
-    void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        if (hit.gameObject.tag == "Wood")
-        {
-            Debug.Log("Player has collided with Wood");
-            wood ++;
-            Destroy(hit.gameObject);
-        }
-        else if (hit.gameObject.tag == "Stone")
-        {
-            Debug.Log("Player has collided with Stone");
-            stone++;
-            Destroy(hit.gameObject);
-        }
-        else if (hit.gameObject.tag == "Food")
-        {
-            Debug.Log("Player has collided with Food");
-            food++;
-            Destroy(hit.gameObject);
-        }
-        else if (hit.gameObject.tag == "Water")
-        {
-            Debug.Log("Player has collided with Water");
-            water++;
-            Destroy(hit.gameObject);
-        }
-    }
-    */
-    #endregion
 }
