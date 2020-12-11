@@ -12,7 +12,8 @@ namespace LukeAJ
         public Transform player;
         public float playerSpottedDistance;
         public float enemyLostSight;
-        
+        public float maxDistance;
+
         //State stuff 
         public DelegateState currentState;
         
@@ -58,35 +59,40 @@ namespace LukeAJ
             patrol.Update = OnPatrolUpdate;
             
             chase.Update = OnChaseUpdate;
-
-            retreat.Enter = OnRetreatEnter;
+            
             retreat.Update = OnRetreatUpdate;
-            retreat.Exit = OnRetreatExit;
 
             ChangeState(patrol);
         }
 
         //the different state functions
-        private void OnRetreatExit()
-        {
-            throw new NotImplementedException();
-        }
-
         private void OnRetreatUpdate()
         {
-            throw new NotImplementedException();
-        }
+            Vector3 relativePos = transform.position - player.position;
 
-        private void OnRetreatEnter()
-        {
-            throw new NotImplementedException();
+            //need to check for null for this function to work properly
+            //rotation while retreating
+            if (relativePos != Vector3.zero)
+            {
+                Quaternion lookRotation = Quaternion.LookRotation(relativePos);
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * enemy.turnSpeed);
+            }
+            
+            //moving towards the end retreat pos and de-spawn
+            transform.position = Vector3.MoveTowards(transform.position, transform.position * maxDistance, enemy.speed * Time.deltaTime);
+
+            if (Vector3.Distance(player.position, transform.position) >= maxDistance)
+            {
+                gameObject.SetActive(false);
+            }
+            
         }
 
         private void OnChaseUpdate()
         {
             enemy.Chase();
 
-            if (Vector3.Distance(player.position, gameObject.transform.position) >= enemyLostSight)
+            if (Vector3.Distance(player.position, transform.position) >= enemyLostSight)
             {
                 ChangeState(patrol);
             }
