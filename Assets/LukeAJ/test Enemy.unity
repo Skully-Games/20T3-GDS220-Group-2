@@ -549,7 +549,7 @@ GameObject:
   - component: {fileID: 1797693480}
   - component: {fileID: 1797693479}
   - component: {fileID: 1797693478}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -626,7 +626,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797693477}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.59, y: 1.02, z: 3.04}
+  m_LocalPosition: {x: 0.4, y: 1.02, z: 3.04}
   m_LocalScale: {x: 10.018, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -701,29 +701,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 737438916302518895, guid: 21f57de394c55784480ea89ad4654049, type: 3}
-      propertyPath: m_Constraints
-      value: 80
+    - target: {fileID: 521014539, guid: 21f57de394c55784480ea89ad4654049, type: 3}
+      propertyPath: layer.m_Bits
+      value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 737438916302518895, guid: 21f57de394c55784480ea89ad4654049, type: 3}
-      propertyPath: m_AngularDrag
-      value: 10
+    - target: {fileID: 706740787, guid: 21f57de394c55784480ea89ad4654049, type: 3}
+      propertyPath: layer.m_Bits
+      value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 737438916302518895, guid: 21f57de394c55784480ea89ad4654049, type: 3}
-      propertyPath: m_Drag
-      value: 3
+    - target: {fileID: 1674465938, guid: 21f57de394c55784480ea89ad4654049, type: 3}
+      propertyPath: layer.m_Bits
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3279983185973297183, guid: 21f57de394c55784480ea89ad4654049, type: 3}
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
-    - target: {fileID: 5978384531591297368, guid: 21f57de394c55784480ea89ad4654049, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+    - target: {fileID: 6187740794573982687, guid: 21f57de394c55784480ea89ad4654049, type: 3}
+      propertyPath: homeBase
       value: 
-      objectReference: {fileID: 2100000, guid: ff059fc016fcf8d4a88162b27e334cba, type: 2}
+      objectReference: {fileID: 1499852920}
+    - target: {fileID: 6187740794573982687, guid: 21f57de394c55784480ea89ad4654049, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1596515441}
+    - target: {fileID: 6187740794573982694, guid: 21f57de394c55784480ea89ad4654049, type: 3}
+      propertyPath: patrolPoint
+      value: 
+      objectReference: {fileID: 293722065}
+    - target: {fileID: 6187740794573982694, guid: 21f57de394c55784480ea89ad4654049, type: 3}
+      propertyPath: crystal
+      value: 
+      objectReference: {fileID: 1847481810}
     - target: {fileID: 6542985402759611155, guid: 21f57de394c55784480ea89ad4654049, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.28
+      value: -0.45
       objectReference: {fileID: 0}
     - target: {fileID: 6542985402759611155, guid: 21f57de394c55784480ea89ad4654049, type: 3}
       propertyPath: m_LocalPosition.y
@@ -765,96 +777,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6542985402759611155, guid: 21f57de394c55784480ea89ad4654049, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6542985402759611155, guid: 21f57de394c55784480ea89ad4654049, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6542985402759611155, guid: 21f57de394c55784480ea89ad4654049, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6727634121673758432, guid: 21f57de394c55784480ea89ad4654049, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1596515441}
-    - target: {fileID: 6727634121673758432, guid: 21f57de394c55784480ea89ad4654049, type: 3}
-      propertyPath: enemyAI
-      value: 
-      objectReference: {fileID: 6187740794573982687}
-    - target: {fileID: 6727634121673758432, guid: 21f57de394c55784480ea89ad4654049, type: 3}
-      propertyPath: playerSpottedDistance
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6727634121673758432, guid: 21f57de394c55784480ea89ad4654049, type: 3}
-      propertyPath: enemy
-      value: 
-      objectReference: {fileID: 6187740794573982687}
-    - target: {fileID: 6727634121673758432, guid: 21f57de394c55784480ea89ad4654049, type: 3}
-      propertyPath: enemyLostSight
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6727634121673758432, guid: 21f57de394c55784480ea89ad4654049, type: 3}
-      propertyPath: homeBase
-      value: 
-      objectReference: {fileID: 1499852920}
-    - target: {fileID: 6727634121673758432, guid: 21f57de394c55784480ea89ad4654049, type: 3}
-      propertyPath: turnForce
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 6727634121673758432, guid: 21f57de394c55784480ea89ad4654049, type: 3}
-      propertyPath: maxDistance
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 6727634121673758432, guid: 21f57de394c55784480ea89ad4654049, type: 3}
-      propertyPath: currentState.active
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8328541071563683507, guid: 21f57de394c55784480ea89ad4654049, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21f57de394c55784480ea89ad4654049, type: 3}
---- !u!1 &6187740794573982686 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3279983185973297183, guid: 21f57de394c55784480ea89ad4654049, type: 3}
-  m_PrefabInstance: {fileID: 6187740794573982685}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6187740794573982687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6187740794573982686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f1f427c8799b134db8ee8d23b5cb004, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  homeBase: {fileID: 1499852920}
-  player: {fileID: 1596515441}
-  speed: 8
-  crystal: {fileID: 1847481810}
-  patrolPoint: {fileID: 293722065}
-  startWaitTime: 5
-  turnSpeed: 5
-  avoidTurnForce: 100
-  canMove: 0
-  avoidEnabled: 1
-  patrolEnabled: 1
-  minX: -10
-  maxX: 10
-  minZ: -10
-  maxZ: 10
-  leftRayOffset: 1
-  rightRayOffset: 1
-  minimumDistToAvoid: 4
-  stoppingDistance: 2
 --- !u!1001 &7541278778887709235
 PrefabInstance:
   m_ObjectHideFlags: 0
