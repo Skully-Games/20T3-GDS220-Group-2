@@ -4494,11 +4494,6 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 256
-  waterDistance: 0.4
-  waterMask:
-    serializedVersion: 2
-    m_Bits: 0
-  crafting: {fileID: 0}
 --- !u!114 &493496726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4514,16 +4509,11 @@ MonoBehaviour:
   wood: 0
   stone: 0
   food: 5
-  crystal: 0
-  holdToMineTimer: 2
-  holdToMineTimerElapsed: 0
-  mineBar: {fileID: 0}
-  mineSlider: {fileID: 0}
-  stats: {fileID: 0}
+  water: 11
   woodText: {fileID: 849356750}
   stoneText: {fileID: 1717366402}
   foodText: {fileID: 748015409}
-  crystalText: {fileID: 0}
+  waterText: {fileID: 88856341}
   pickUpMessage: {fileID: 612726422}
   Interactable: {fileID: 0}
   craftingUI: {fileID: 0}
@@ -9154,14 +9144,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5946180556657433242, guid: 176ef0750343cec4eae9aa9a33c3fc50, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3.2882
-      objectReference: {fileID: 0}
-    - target: {fileID: 5946180556657433242, guid: 176ef0750343cec4eae9aa9a33c3fc50, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2.816
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 176ef0750343cec4eae9aa9a33c3fc50, type: 3}
 --- !u!1 &1092729782
@@ -11768,7 +11750,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1440473384
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12393,12 +12375,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c5ee04b0ecab541a79594d97949039, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBar: {fileID: 1542429012}
-  hungerBar: {fileID: 1184800403}
-  thirstBar: {fileID: 68557321}
-  healthValue: 0
-  hungerValue: 0
-  thirstValue: 0
+  healthSlider: {fileID: 1605708422}
+  hungerSlider: {fileID: 1710195607}
+  thirstSlider: {fileID: 1341874025}
 --- !u!1001 &1483493510
 PrefabInstance:
   m_ObjectHideFlags: 0
