@@ -36,12 +36,18 @@ namespace Luke
 
         void RaycastOut()
         {
+            //ray stuff
             Ray ray = new Ray();
             ray.origin = transform.position;
             ray.direction = transform.forward;
             RaycastHit raycastHit = new RaycastHit();
+            
+            //location to avoid direction
+            
 
-            //TODO: add a layer called obstacles to check for obstacles to avoid
+            //testing
+            Debug.DrawRay(ray.origin, ray.direction, Color.blue);
+            
             if (Physics.Raycast(ray, out raycastHit, rayDistance,layer))
             {
                 rayHasHit = true;
@@ -50,7 +56,6 @@ namespace Luke
                 {
                     Debug.DrawLine(ray.origin, raycastHit.point, Color.red);
                     rb.AddTorque(0, rotationSpeed, 0);
-                    //need to add a force toward the patrol position but still avoiding
                 }
             }
         }

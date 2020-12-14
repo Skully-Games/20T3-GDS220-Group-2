@@ -22,6 +22,7 @@ namespace LukeAJ
         //Chase variables
         [Header("Chase stuff")]
         public float stoppingDistance;
+        public float chaseSpeed;
 
         // Start is called before the first frame update
         void OnEnable()
@@ -39,9 +40,13 @@ namespace LukeAJ
 
         public void Chase()
         {
+            Vector3 chaseDirection = player.position - transform.position;
+            
             if (Vector3.Distance(transform.position, player.position) > stoppingDistance )
             {
-                transform.position = Vector3.MoveTowards(transform.position, player.position, enemyPatrol.speed * Time.deltaTime);
+                //rotation
+                rb.AddTorque(Vector3.Cross(transform.forward, chaseDirection) * enemyPatrol.turnSpeed);
+                rb.AddForce((player.position - transform.position) * chaseSpeed);
             }
 
             //stops at a specified stoppingDistance and attacks or damages

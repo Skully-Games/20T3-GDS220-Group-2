@@ -43,11 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84842e19985bf12438250eac41b79754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayDistance: 5
-  rotationSpeed: -20
   layer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4
+  rayDistance: 5
+  rotationSpeed: -10
+  rayHasHit: 0
 --- !u!1 &706740785
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,11 +92,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84842e19985bf12438250eac41b79754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayDistance: 3
-  rotationSpeed: 20
   layer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4
+  rayDistance: 3
+  rotationSpeed: 10
+  rayHasHit: 0
 --- !u!1 &1674465936
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,11 +141,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84842e19985bf12438250eac41b79754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayDistance: 5
-  rotationSpeed: 20
   layer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4
+  rayDistance: 5
+  rotationSpeed: 10
+  rayHasHit: 0
 --- !u!1 &3279983185973297183
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,7 +282,7 @@ MonoBehaviour:
   player: {fileID: 0}
   playerSpottedDistance: 10
   enemyLostSight: 10
-  maxRetreatDistance: 0
+  maxRetreatDistance: 30
   currentState:
     active: 0
   patrol:
@@ -304,6 +307,7 @@ MonoBehaviour:
   enemyPatrol: {fileID: 6187740794573982694}
   player: {fileID: 0}
   stoppingDistance: 2
+  chaseSpeed: 4
 --- !u!114 &6187740794573982694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,15 +320,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bd0c3d12bf29044b8f174865f249ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 6187740794573982687}
   minX: -10
   maxX: 10
   minZ: -10
   maxZ: 10
-  startWaitTime: 5
-  patrolPoint: {fileID: 0}
-  patrolEnabled: 1
-  turnSpeed: 5
-  canMove: 1
   crystal: {fileID: 0}
+  patrolPoint: {fileID: 0}
+  startWaitTime: 5
   speed: 10
+  turnSpeed: 5
+  patrolEnabled: 1

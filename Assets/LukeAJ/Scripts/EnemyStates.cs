@@ -67,7 +67,7 @@ namespace LukeAJ
         }
 
         //the different state functions
-        //TODO might need to place this into retreat function instead?
+        //TODO!!
         private void OnRetreatUpdate()
         {
             Vector3 relativePos = transform.position - player.position;
