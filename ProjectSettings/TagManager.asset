@@ -13,6 +13,7 @@ TagManager:
   - Sand
   - AmbienceD
   - CraftingTable
+  - BoatDeploy
   layers:
   - Default
   - TransparentFX

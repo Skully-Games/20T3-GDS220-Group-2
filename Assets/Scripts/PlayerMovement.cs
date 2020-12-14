@@ -23,10 +23,13 @@ public class PlayerMovement : MonoBehaviour
     public float waterDistance = 0.4f;
     public LayerMask waterMask;
     bool isGrounded;
-    bool isWatered;
+    public bool isWatered;
 
     public Crafting crafting;
 
+    public float downTime, upTime, pressTime = 0;
+    public float countDown = 5.0f;
+    
 
     void Start()
     {
@@ -37,18 +40,19 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-     //   isWatered = Physics.CheckSphere(groundCheck.position, waterDistance, waterMask);
+        isWatered = Physics.CheckSphere(groundCheck.position, waterDistance, waterMask);
         
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
 
-     /*   if (isWatered && crafting.boatCrafted)
+     /*   if (isWatered)
         {
-            Debug.Log("You Win!");
+            Debug.Log("In water");
         }
      */
+
 
         float x = Input.GetAxis("Horizontal");
        
@@ -61,18 +65,32 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
+
+            downTime = Time.time;
+            pressTime = downTime + countDown;
+            
             animator.SetFloat("Running", 1f);
             speed += speedBoost;
+
         }
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
+
             animator.SetFloat("Running", 0f);
+
+            if (Time.time >= pressTime)
+            {
+
+                SoundManager.PlaySFX("HBreathing");
+            }
+
+            //SoundManager.PlaySFX("HBreathing");
+
             speed -= speedBoost;
-            SoundManager.PlaySFX("HBreathing");
+           
         }
 
-        
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             SoundManager.PlaySFX("JumpLanding");
@@ -81,6 +99,5 @@ public class PlayerMovement : MonoBehaviour
 
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
-        
     }
 }
