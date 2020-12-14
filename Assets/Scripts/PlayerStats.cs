@@ -71,17 +71,17 @@ public class PlayerStats : MonoBehaviour
             currentHealth += (Time.deltaTime / healthBurnRate);
         }
 
-        if(currentHealth >= maxHealth)
+        if (currentHealth >= maxHealth)
         {
             currentHealth = maxHealth;
         }
 
-        if(currentHunger >= maxHunger)
+        if (currentHunger >= maxHunger)
         {
             currentHunger = maxHunger;
         }
 
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
             currentHealth = 0;
             YouDied();
@@ -93,7 +93,7 @@ public class PlayerStats : MonoBehaviour
             Starvation();
         }
 
-        if(currentThirst >= maxThirst)
+        if (currentThirst >= maxThirst)
         {
             currentThirst = maxThirst;
         }
@@ -104,7 +104,7 @@ public class PlayerStats : MonoBehaviour
             Dehydration();
         }
 
-        if(currentHunger <= 0 && currentThirst <= 0)
+        if (currentHunger <= 0 && currentThirst <= 0)
         {
             DoubleDeath();
         }
@@ -132,7 +132,7 @@ public class PlayerStats : MonoBehaviour
 
     void Dehydration()
     {
-        if(currentHunger > 0)
+        if (currentHunger > 0)
         {
             currentHealth -= (Time.deltaTime / healthBurnRate);
         }

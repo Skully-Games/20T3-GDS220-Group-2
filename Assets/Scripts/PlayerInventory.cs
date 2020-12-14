@@ -17,6 +17,7 @@ public class PlayerInventory : MonoBehaviour
     [HideInInspector]
     public int crystal = 0;
 
+    //Hold2Mine Variables
     public float holdToMineTimer = 2f;
     public float holdToMineTimerElapsed;
     public Slider mineBar;
@@ -26,24 +27,47 @@ public class PlayerInventory : MonoBehaviour
     public PlayerStats stats;
     public float drinkSpeed;
 
+    //UI Variables
     public TextMeshProUGUI woodText;
     public TextMeshProUGUI stoneText;
     public TextMeshProUGUI foodText;
     public TextMeshProUGUI crystalText;
     public TextMeshProUGUI pickUpMessage;
 
-    // public GameObject Interactable;
+    public GameObject Interactable;
     public GameObject craftingUI;
     public Camera camera;
-
-    public Crafting crafting;
-    // public EndGame endGame;
-    public PlayerMovement playerMovement;
-
     private ResorcePickup itemBeingPickedUp;
+
+    //Crafting Variables
+    public Crafting crafting;
+    public bool pickaxeEquipped = false;
+
+    //Pickaxe Tool Variables
+    public GameObject pickaxeIcon;
+    public Image pickaxeImage;
+    public Color equipped;
+    public Color unequipped;
+
+
+    private void Start()
+    {
+        pickaxeImage = pickaxeIcon.GetComponent<Image>();
+        equipped = new Color(pickaxeImage.color.r, pickaxeImage.color.g, pickaxeImage.color.b, 1f);
+        unequipped = new Color(pickaxeImage.color.r, pickaxeImage.color.g, pickaxeImage.color.b, 0.1f);
+    }
 
     void Update()
     {
+        if (crafting.pickaxeCrafted == false)
+        {
+            pickaxeIcon.SetActive(false);
+        }
+        else
+        {
+            pickaxeIcon.SetActive(true);
+        }
+
         #region UI Stuff
         woodText.text = wood.ToString();
         stoneText.text = stone.ToString();
@@ -52,6 +76,8 @@ public class PlayerInventory : MonoBehaviour
 
         mineBar.maxValue = holdToMineTimer;
         mineBar.value = holdToMineTimerElapsed;
+
+
 
         if (wood > 999)
         {
@@ -73,7 +99,6 @@ public class PlayerInventory : MonoBehaviour
             crystal = 999;
         }
         #endregion
-
         SelectItemBeingPickedUpFromRay();
 
         if (HasItemTargetted())
@@ -104,22 +129,21 @@ public class PlayerInventory : MonoBehaviour
                 {
                     crafting.CraftingOpen();
                 }
-
-               /* else if (itemBeingPickedUp.tag == "BoatDeploy")
-                {
-                    if (crafting.boatCrafted = true && playerMovement.isWatered)
-                    {
-                        endGame.GameEnd();
-                    }
-                }*/
             }
 
             if (Input.GetButton("Fire1"))
             {
                 if (itemBeingPickedUp.tag == "Crystal")
                 {
-                    mineSlider.gameObject.SetActive(true);
-                    HoldToMineProgress();
+                    if (pickaxeEquipped == true)
+                    {
+                        mineSlider.gameObject.SetActive(true);
+                        HoldToMineProgress();
+                    }
+                    else
+                    {
+                        Debug.Log("Needs a pickaxe equipped");
+                    }
                 }
             }
 
@@ -144,6 +168,17 @@ public class PlayerInventory : MonoBehaviour
             mineSlider.gameObject.SetActive(false);
         }
 
+        if (Input.GetKeyDown(KeyCode.Q) && crafting.pickaxeCrafted == true && pickaxeEquipped == false)
+        {
+            EquipPickaxe();
+        }
+        else if (Input.GetKeyDown(KeyCode.Q) && crafting.pickaxeCrafted == true && pickaxeEquipped == true)
+        {
+            UnequipPickaxe();
+        }
+
+        //Opening and Closing Map
+
     }
 
     private bool HasItemTargetted()
@@ -161,6 +196,20 @@ public class PlayerInventory : MonoBehaviour
             itemBeingPickedUp = null;
             mineSlider.gameObject.SetActive(false);
         }
+    }
+
+    void EquipPickaxe()
+    {
+        pickaxeEquipped = true;
+        pickaxeImage.color = equipped;
+        Debug.Log("Pickaxe is Equipped");
+    }
+
+    void UnequipPickaxe()
+    {
+        pickaxeEquipped = false;
+        pickaxeImage.color = unequipped;
+        Debug.Log("Pickaxe is Unequipped");
     }
 
     private void SelectItemBeingPickedUpFromRay()
