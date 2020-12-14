@@ -8,14 +8,18 @@ using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour
 {
-    [HideInInspector]
+    //[HideInInspector]
     public int wood = 0;
-    [HideInInspector]
+    //[HideInInspector]
     public int stone = 0;
-    [HideInInspector]
+    //[HideInInspector]
     public int food = 0;
-    [HideInInspector]
+    //[HideInInspector]
     public int crystal = 0;
+
+    //[HideInInspector]
+    public int water = 0;
+    
 
     public float holdToMineTimer = 2f;
     public float holdToMineTimerElapsed;
@@ -32,7 +36,7 @@ public class PlayerInventory : MonoBehaviour
     public TextMeshProUGUI crystalText;
     public TextMeshProUGUI pickUpMessage;
 
-    public GameObject Interactable;
+    ///public GameObject Interactable;
     public GameObject craftingUI;
     public Camera camera;
 
