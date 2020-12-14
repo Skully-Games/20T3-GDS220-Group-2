@@ -9,10 +9,11 @@ namespace LukeAJ
     {
         //References
         public Enemy enemy;
+        public EnemyPatrol enemyPatrol;
         public Transform player;
         public float playerSpottedDistance;
         public float enemyLostSight;
-        public float maxDistance;
+        public float maxRetreatDistance;
 
         //State stuff 
         public DelegateState currentState;
@@ -66,6 +67,7 @@ namespace LukeAJ
         }
 
         //the different state functions
+        //TODO!!
         private void OnRetreatUpdate()
         {
             Vector3 relativePos = transform.position - player.position;
@@ -75,13 +77,13 @@ namespace LukeAJ
             if (relativePos != Vector3.zero)
             {
                 Quaternion lookRotation = Quaternion.LookRotation(relativePos);
-                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * enemy.turnSpeed);
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * enemyPatrol.turnSpeed);
             }
             
             //moving towards the end retreat pos and de-spawn
-            transform.position = Vector3.MoveTowards(transform.position, transform.position * maxDistance, enemy.speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, transform.position * maxRetreatDistance, enemyPatrol.speed * Time.deltaTime);
 
-            if (Vector3.Distance(player.position, transform.position) >= maxDistance)
+            if (Vector3.Distance(player.position, transform.position) >= maxRetreatDistance)
             {
                 gameObject.SetActive(false);
             }
@@ -100,7 +102,7 @@ namespace LukeAJ
 
         private void OnPatrolUpdate()
         {
-            enemy.Patrol();
+            enemyPatrol.Patrol();
             
             if (Vector3.Distance(player.position,gameObject.transform.position) <= playerSpottedDistance)
             {
