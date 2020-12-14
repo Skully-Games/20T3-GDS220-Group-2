@@ -11,6 +11,7 @@ public class Crafting : MonoBehaviour
     public GameObject CraftingUI;
 
     public bool boatCrafted = false;
+    public bool pickaxeCrafted = false;
 
 
     public PlayerInventory inventory;
@@ -51,6 +52,7 @@ public class Crafting : MonoBehaviour
     {
         inventory.wood -= 2;
         inventory.stone -= 1;
+        pickaxeCrafted = true;
         Debug.Log("Pickaxe Acquired!");
     }
 

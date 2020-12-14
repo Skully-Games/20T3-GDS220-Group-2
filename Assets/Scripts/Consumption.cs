@@ -22,18 +22,4 @@ public class Consumption : MonoBehaviour
             Debug.Log("Out of Food");
         }
     }
-
-    public void ConsumeWater()
-    {
-        if (inventoryStats.water > 0)
-        {
-            inventoryStats.water --;
-            stats.currentThirst += 20;
-            Debug.Log("Consumed Water");
-        }
-        else
-        {
-            Debug.Log("Out of Water");
-        }
-    }
 }
