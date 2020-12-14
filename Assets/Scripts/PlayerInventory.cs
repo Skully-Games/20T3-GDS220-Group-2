@@ -32,12 +32,12 @@ public class PlayerInventory : MonoBehaviour
     public TextMeshProUGUI crystalText;
     public TextMeshProUGUI pickUpMessage;
 
-    public GameObject Interactable;
+    // public GameObject Interactable;
     public GameObject craftingUI;
     public Camera camera;
 
     public Crafting crafting;
-    public EndGame endGame;
+    // public EndGame endGame;
     public PlayerMovement playerMovement;
 
     private ResorcePickup itemBeingPickedUp;
@@ -105,13 +105,13 @@ public class PlayerInventory : MonoBehaviour
                     crafting.CraftingOpen();
                 }
 
-                else if (itemBeingPickedUp.tag == "BoatDeploy")
+               /* else if (itemBeingPickedUp.tag == "BoatDeploy")
                 {
                     if (crafting.boatCrafted = true && playerMovement.isWatered)
                     {
                         endGame.GameEnd();
                     }
-                }
+                }*/
             }
 
             if (Input.GetButton("Fire1"))
