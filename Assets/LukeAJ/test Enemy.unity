@@ -626,7 +626,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797693477}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4, y: 1.02, z: 2.51}
+  m_LocalPosition: {x: -2.76, y: 1.02, z: 15.32}
   m_LocalScale: {x: 10.018, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -646,7 +646,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1955756693375202713, guid: 339b20783345a864caa9c379ec13f38f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 28.56
+      value: 29.27
       objectReference: {fileID: 0}
     - target: {fileID: 1955756693375202713, guid: 339b20783345a864caa9c379ec13f38f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -654,7 +654,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1955756693375202713, guid: 339b20783345a864caa9c379ec13f38f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.47
+      value: -1.91
       objectReference: {fileID: 0}
     - target: {fileID: 1955756693375202713, guid: 339b20783345a864caa9c379ec13f38f, type: 3}
       propertyPath: m_LocalRotation.x
@@ -737,6 +737,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1596515441}
+    - target: {fileID: 6187740794573982687, guid: 21f57de394c55784480ea89ad4654049, type: 3}
+      propertyPath: chaseSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187740794573982687, guid: 21f57de394c55784480ea89ad4654049, type: 3}
+      propertyPath: stoppingDistance
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6187740794573982694, guid: 21f57de394c55784480ea89ad4654049, type: 3}
       propertyPath: crystal
       value: 
@@ -745,6 +753,18 @@ PrefabInstance:
       propertyPath: patrolPoint
       value: 
       objectReference: {fileID: 293722065}
+    - target: {fileID: 6187740794573982694, guid: 21f57de394c55784480ea89ad4654049, type: 3}
+      propertyPath: minRange
+      value: -10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187740794573982694, guid: 21f57de394c55784480ea89ad4654049, type: 3}
+      propertyPath: maxRange
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6187740794573982694, guid: 21f57de394c55784480ea89ad4654049, type: 3}
+      propertyPath: speed
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 6542985402759611155, guid: 21f57de394c55784480ea89ad4654049, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.42
