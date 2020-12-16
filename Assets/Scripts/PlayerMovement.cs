@@ -47,11 +47,7 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
-     /*   if (isWatered)
-        {
-            Debug.Log("In water");
-        }
-     */
+
 
 
         float x = Input.GetAxis("Horizontal");

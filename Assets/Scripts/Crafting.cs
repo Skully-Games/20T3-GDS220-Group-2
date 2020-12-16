@@ -19,7 +19,7 @@ public class Crafting : MonoBehaviour
     public void Update()
     {
 
-        if (inventory.wood >= 10 && inventory.stone >= 5)
+        if (inventory.wood >= 10 && inventory.stone >= 5 && inventory.crystal >= 4)
         {
             boatCrafting.SetActive(true);
         }
