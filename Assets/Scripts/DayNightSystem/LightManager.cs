@@ -90,28 +90,28 @@ namespace DayNight_Manager
 
             if (TimeofDay <= 120f)
             {
-                targetLight.GetComponent<Light>().intensity = LightIntensity += Time.deltaTime * 0.18f;
+                targetLight.GetComponent<Light>().intensity = LightIntensity += Time.deltaTime * 0.036f;
 
-                ambienceDaySource.GetComponent<AudioSource>().volume = ambienceVolumeDay += Time.deltaTime * 0.04f;
+                ambienceDaySource.GetComponent<AudioSource>().volume = ambienceVolumeDay += Time.deltaTime * 0.008f;
 
-                ambienceNightSource.GetComponent<AudioSource>().volume = ambienceVolumeNight -= Time.deltaTime * 0.04f;
+                ambienceNightSource.GetComponent<AudioSource>().volume = ambienceVolumeNight -= Time.deltaTime * 0.008f;
 
-                musicDaySource.GetComponent<AudioSource>().volume = musicVolumeDay += Time.deltaTime * 0.04f;
+                musicDaySource.GetComponent<AudioSource>().volume = musicVolumeDay += Time.deltaTime * 0.008f;
 
-                musicNightSource.GetComponent<AudioSource>().volume = musicVolumeNight -= Time.deltaTime * 0.04f;
+                musicNightSource.GetComponent<AudioSource>().volume = musicVolumeNight -= Time.deltaTime * 0.008f;
 
             }
             else if (TimeofDay <= 240f)
             {
-                targetLight.GetComponent<Light>().intensity = LightIntensity -= Time.deltaTime * 0.18f;
+                targetLight.GetComponent<Light>().intensity = LightIntensity -= Time.deltaTime * 0.036f;
 
-                ambienceDaySource.GetComponent<AudioSource>().volume = ambienceVolumeDay -= Time.deltaTime * 0.04f;
+                ambienceDaySource.GetComponent<AudioSource>().volume = ambienceVolumeDay -= Time.deltaTime * 0.008f;
 
-                ambienceNightSource.GetComponent<AudioSource>().volume = ambienceVolumeNight += Time.deltaTime * 0.04f;
+                ambienceNightSource.GetComponent<AudioSource>().volume = ambienceVolumeNight += Time.deltaTime * 0.008f;
 
-                musicDaySource.GetComponent<AudioSource>().volume = musicVolumeDay -= Time.deltaTime * 0.04f;
+                musicDaySource.GetComponent<AudioSource>().volume = musicVolumeDay -= Time.deltaTime * 0.008f;
 
-                musicNightSource.GetComponent<AudioSource>().volume = musicVolumeNight += Time.deltaTime * 0.04f;
+                musicNightSource.GetComponent<AudioSource>().volume = musicVolumeNight += Time.deltaTime * 0.008f;
 
             }
 
