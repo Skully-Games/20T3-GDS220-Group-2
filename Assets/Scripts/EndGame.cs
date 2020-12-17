@@ -11,6 +11,8 @@ public class EndGame : MonoBehaviour
     public Crafting crafting;
     public PlayerMovement playerMovement;
 
+    public bool inWater;
+
     public void Update()
     {
         if (crafting.boatCrafted && playerMovement.isWatered)
