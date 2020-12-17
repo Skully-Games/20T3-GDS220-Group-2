@@ -12,6 +12,7 @@ namespace LukeAJ
         //Event stuff
         public HomeBase homeBase;
         public EnemyPatrol enemyPatrol;
+        public GameObject deathScreen;
         
         [Header("Enemy references")]
         //TODO 
@@ -59,7 +60,10 @@ namespace LukeAJ
         private void Attack()
         {
             //temporary
-            Destroy(player.gameObject);
+            deathScreen.gameObject.SetActive(true);
+            Time.timeScale = 0f;
+            Cursor.lockState = CursorLockMode.None;
+
         }
 
         public void Retreat(Collider homeBaseCol)
