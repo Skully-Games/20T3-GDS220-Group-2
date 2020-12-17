@@ -232,7 +232,7 @@ public class PlayerInventory : MonoBehaviour
 
                 if (itemBeingPickedUp.tag != "Crystal" && itemBeingPickedUp.tag != "Water" && itemBeingPickedUp.tag != "CraftingTable")
                 {
-                    pickUpMessage.text = "Pick Up: " + itemBeingPickedUp.gameObject.name;
+                    pickUpMessage.text = "(E) Pick Up: " + itemBeingPickedUp.gameObject.name;
                 }
                 else if (itemBeingPickedUp.tag == "Crystal")
                 {
