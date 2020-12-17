@@ -8,13 +8,13 @@ using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour
 {
-    [HideInInspector]
+    //[HideInInspector]
     public int wood = 0;
-    [HideInInspector]
+    //[HideInInspector]
     public int stone = 0;
-    [HideInInspector]
+    //[HideInInspector]
     public int food = 0;
-    [HideInInspector]
+    //[HideInInspector]
     public int crystal = 0;
 
     //Hold2Mine Variables
@@ -236,7 +236,14 @@ public class PlayerInventory : MonoBehaviour
                 }
                 else if (itemBeingPickedUp.tag == "Crystal")
                 {
-                    pickUpMessage.text = "(Hold LMB) Mine Crystal";
+                    if (pickaxeEquipped == true)
+                    {
+                        pickUpMessage.text = "(Hold LMB) Mine Crystal";
+                    }
+                    else
+                    {
+                        pickUpMessage.text = "Needs a Pickaxe";
+                    }
                 }
                 else if (itemBeingPickedUp.tag == "Water")
                 {
@@ -244,7 +251,7 @@ public class PlayerInventory : MonoBehaviour
                 }
                 else if (itemBeingPickedUp.tag == "CraftingTable")
                 {
-                    pickUpMessage.text = "Open Crafting Menu";
+                    pickUpMessage.text = "(E) Open Crafting Menu";
                 }
 
             }

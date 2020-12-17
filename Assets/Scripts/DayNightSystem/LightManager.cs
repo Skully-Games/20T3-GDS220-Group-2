@@ -43,7 +43,7 @@ namespace DayNight_Manager
         [SerializeField] private LightPreset Preset;
         [Space(5)]
 
-        [SerializeField, Range(0, 48)] private float TimeofDay;
+        [SerializeField, Range(0, 240)] private float TimeofDay;
         [SerializeField, Range(0, 5)] private float LightIntensity;
 
         private void Awake()
@@ -79,16 +79,16 @@ namespace DayNight_Manager
             if (Application.isPlaying)
             {
                 TimeofDay += Time.deltaTime;
-                TimeofDay %= 48;  // For longer period of time change the value
-                UpdateLighting(TimeofDay / 48f);
+                TimeofDay %= 240;  // For longer period of time change the value
+                UpdateLighting(TimeofDay / 240f);
             }
             else
             {
-                UpdateLighting(TimeofDay / 48f);
+                UpdateLighting(TimeofDay / 240f);
             }
 
 
-            if (TimeofDay <= 24f)
+            if (TimeofDay <= 120f)
             {
                 targetLight.GetComponent<Light>().intensity = LightIntensity += Time.deltaTime * 0.18f;
 
@@ -101,7 +101,7 @@ namespace DayNight_Manager
                 musicNightSource.GetComponent<AudioSource>().volume = musicVolumeNight -= Time.deltaTime * 0.04f;
 
             }
-            else if (TimeofDay <= 48f)
+            else if (TimeofDay <= 240f)
             {
                 targetLight.GetComponent<Light>().intensity = LightIntensity -= Time.deltaTime * 0.18f;
 
@@ -160,32 +160,32 @@ namespace DayNight_Manager
         }
         void ChangeCycle()  //THIS FUNCTION IS FOR CHANGING THE SKYBOX AND NEEDS TO SETUP A SKYBOX IN MAIN CAMERA
         {
-            if (TimeofDay >= 0.2f)
+            if (TimeofDay >= 1f)
             {
                 targetMainCamera.GetComponent<Skybox>().material = sky[3];
             }
 
-            if (TimeofDay >= 10.5f)
+            if (TimeofDay >= 52.5f)
             {
                 targetMainCamera.GetComponent<Skybox>().material = sky[2];
             }
 
-            if (TimeofDay >= 12.5f)
+            if (TimeofDay >= 62.5f)
             {
                 targetMainCamera.GetComponent<Skybox>().material = sky[0];
             }
 
-            if (TimeofDay >= 38.5f)
+            if (TimeofDay >= 192.5f)
             {
                 targetMainCamera.GetComponent<Skybox>().material = sky[2];
             }
 
-            if (TimeofDay >= 40.5f)
+            if (TimeofDay >= 202.5f)
             {
                 targetMainCamera.GetComponent<Skybox>().material = sky[3];
             }
 
-            if (TimeofDay >= 45.5f)
+            if (TimeofDay >= 227.5f)
             {
                 targetMainCamera.GetComponent<Skybox>().material = sky[1];
             }
